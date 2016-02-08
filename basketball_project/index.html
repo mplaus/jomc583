@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html ng-app= "basketballStats">
+  <head>
+    <meta charset="UTF-8">
+    <!--json-->
+    <script src="js/basketball.js"></script>
+    <!--angular-->
+    <script src="js/angular.min.js"></script>
+    <!--myjs-->
+    <script src="js/app.js"></script>
+    <!--bootstrap-->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <title>title</title>
+  </head>
+  
+  
+  <body ng-controller= "StatController as stats">
+  <div class="container">
+  <h2>Basket Ball Statistics Table</h2>
+  <p>Here are stats for UNC players</p>            
+  <table class="table table-striped" >
+    <thead>
+      <tr>
+        <th ng-click="stats.toggleIt('last')">Name</th>
+        <th ng-click="stats.toggleIt('minutes')">Minutes</th>
+        <th ng-click="stats.toggleIt('steals')">Steals</th>
+        <th ng-click="stats.toggleIt('points')">Points</th>
+        <th ng-click="stats.toggleIt('fouls')">Fouls</th>
+        <th>Images</th>
+      </tr>
+      <div class="row">
+  <div class="col-lg-6">
+    <div class="input-group">
+      <span  class="input-group-btn">
+        <button class="btn btn-default" type="button">Go!</button>
+      </span>
+      <input ng-model="search" type="text" class="form-control" placeholder="Search for...">
+    </div><!-- /input-group -->
+  </div><!-- /.col-lg-6 -->
+  
+    </thead>
+    <tbody>
+      <tr ng-repeat= "statistics in stats.info | filter: search | orderBy: stats.column : stats.toggle" >
+        <td>{{statistics.last}}, {{statistics.first}}</td>
+        <td>{{statistics.minutes}}</td>
+        <td>{{statistics.steals}}</td>
+        <td>{{statistics.points}}</td>
+        <td>{{statistics.fouls}}</td>
+        <td><img ng-src="{{statistics.images[0]}}" width="100px" height="auto"/></td>
+      </tr>
+      
+    </tbody>
+  </table>
+</div>
+  </body>
+</html>

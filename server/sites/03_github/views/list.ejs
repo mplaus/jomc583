@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+            <title>Github Users</title>
+        </head>
+        <body>
+            <h1>Github Users</h1>
+            
+            <% if (periods[0].users.length > 0) { %>
+            <ul>
+                <%for (var i in periods[0].users) { %>
+                        <!--html-->
+                        <li><a href="https://github.com/<%=periods[0].users[i] %>">
+                            <%= periods[0].users[i] %>
+                        </a></li> %></a></li
+                        <% } %>
+            </ul>
+            <% } else { %>
+            <p>Sorry! There are no users yes.</p>
+            <% } %>
+        </body>
+    </html>
